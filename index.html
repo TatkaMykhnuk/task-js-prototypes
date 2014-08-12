@@ -5,6 +5,68 @@
 	<title>OOP_home_work</title>
 </head>
 <body>
-	<script src="js.js"></script>
+	<script>
+
+    function Monster(startHealthLevel, valueOfDamage){
+        this.startHealthLevel = startHealthLevel;
+        this.valueOfDamage = valueOfDamage;
+        this.currentHealthLevel = this.startHealthLevel;
+
+        this.getName = function(){
+            return this.name;
+        }
+        this.action = function(enemy){
+            enemy.currentHealthLevel -= this.valueOfDamage;
+        }
+    }
+
+    CatMonster.prototype = new Monster(50, 5);
+    function CatMonster(name){
+        this.name=name;
+    }
+
+    BirdMonster.prototype = new Monster(60, 3);
+    function BirdMonster(name){
+        this.name=name;
+    }
+
+    var catMonster = new CatMonster('Felix');
+    var birdMonster = new BirdMonster('Bird');
+
+
+    //Modern inheritance
+
+//    var monster = {
+//        action: function(enemy){
+//            enemy.currentHealthLevel -= this.valueOfDamage;
+//        },
+//        getName: function(){
+//          return this.name;
+//        }
+//    };
+//
+//    var catMonster = Object.create(monster);
+//    catMonster.startHealthLevel = 50;
+//    catMonster.currentHealthLevel = catMonster.startHealthLevel;
+//    catMonster.valueOfDamage = 5;
+//    catMonster.name = "catMonster";
+//
+//    var birdMonster = Object.create(monster);
+//    birdMonster.startHealthLevel = 60;
+//    birdMonster.currentHealthLevel = birdMonster.startHealthLevel;
+//    birdMonster.valueOfDamage = 3;
+//    birdMonster.name = "birdMonster";
+
+
+    console.log(catMonster);
+    console.log(birdMonster);
+
+    catMonster.action(birdMonster);
+    catMonster.action(birdMonster);
+
+    console.log(catMonster);
+    console.log(birdMonster);
+
+</script>
 </body>
 </html>
